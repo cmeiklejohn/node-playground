@@ -12,5 +12,3 @@ var request = http.get(opts, function(response) {
     console.log(data);
   });
 });
-
-request.end();
