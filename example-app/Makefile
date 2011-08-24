@@ -1,12 +1,25 @@
+# Sources.
+#
 TESTS = $(shell find test/*.test.js)
 
+# Binaries we need to run builds from this makefile.
+#
+EXPRESSO_BINDIR= 		~/node_modules/expresso/bin
+JSCOVERAGE_BINDIR=  /usr/local/bin
+
+# Setup path for execution.
+#
+BINS=$(EXPRESSO_BINDIR):$(PATH)
+
+# Targets.
+#
 test:
-	@NODE_ENV=test ~/node_modules/expresso/bin/expresso \
+	@PATH=$(BINS) NODE_ENV=test expresso \
 		-I lib \
 		$(TESTFLAGS) \
 		$(TESTS)
 
 test-cov:
-	@TESTFLAGS=--cov $(MAKE) test
+	@PATH=$(BINS) TESTFLAGS=--cov $(MAKE) test
 
 .PHONY: test test-cov
