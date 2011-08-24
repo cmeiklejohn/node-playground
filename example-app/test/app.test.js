@@ -7,7 +7,7 @@ module.exports = {
         { url: '/' }, 
         { status: 200, headers: { 'Content-Type': 'text/html; charset=utf-8' }},
         function(response) { 
-          assert_includes(response.body, 'Welcome');
+          assert.includes(response.body, 'Welcome');
         });
   }
 };
