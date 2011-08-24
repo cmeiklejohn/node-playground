@@ -9,4 +9,4 @@ test:
 test-cov:
 	@TESTFLAGS=--cov $(MAKE) test
 
-.PHONY: site test test-cov benchmark docs docclean
+.PHONY: test test-cov
