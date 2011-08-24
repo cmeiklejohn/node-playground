@@ -21,6 +21,10 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
+app.get('/', function(request, response) { 
+  response.send('Welcome');
+});
+
 if (!module.parent) {
   app.listen(3000);
   console.log("Server running on port %d", app.address().port);
