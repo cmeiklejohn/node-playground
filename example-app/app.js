@@ -1,4 +1,4 @@
-var express = require('express');
+var express = require('express'); 
 
 var app = express.createServer();
 
@@ -9,7 +9,9 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
+  app.use(express.logger());
   app.use(app.router);
+  app.set('view engine', 'jade');
   app.use(express.static(__dirname + '/public'));
 });
 
@@ -22,10 +24,10 @@ app.configure('production', function(){
 });
 
 app.get('/', function(request, response) { 
-  response.send('Welcome');
+  response.render('index');
 });
 
 if (!module.parent) {
-  app.listen(3000);
+  app.listen(5000);
   console.log("Server running on port %d", app.address().port);
 }
